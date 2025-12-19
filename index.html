@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سمسار التقنية للمقاولات | Samsar Tech Construction</title>
+    <link rel="icon" href="assets/log.jpeg" type="image/jpeg" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Bootstrap CSS (For Services Modals) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            corePlugins: {
+                preflight: false, // Disable Tailwind preflight to avoid conflicts with Bootstrap
+            },
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#FF6B35', // Bold orange-red for modern, energetic feel
+                        secondary: '#004E89', // Deep navy blue for professionalism
+                        accent: '#00D4FF', // Bright cyan for energy and tech feel
+                        background: '#F5F7FA', // Light neutral background
+                        textPrimary: '#1A1A2E', // Deep dark for text
+                        muted: '#6C757D',
+                        card: '#FFFFFF', // White cards
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* Offset for fixed navbar when scrolling to ID */
+        html {
+            scroll-padding-top: 100px;
+        }
+
+        /* Nav Link Active State */
+        .nav-link.active {
+            color: #FF6B35 !important;
+            /* Primary Color */
+            background-color: #f5f7fa;
+        }
+
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 0;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* ===== Custom Portfolio Modal Styles ===== */
+        .custom-modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .custom-modal.flex {
+            display: flex;
+        }
+
+        .custom-modal-content {
+            background-color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 1.5rem;
+            max-width: 56rem;
+            /* max-w-4xl */
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+
+        }
+
+        .glow-circle {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(100px);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#4f8cff", /* Bright Blue */
+              "background-light": "#f5f6f8",
+              "background-dark": "#0f1623",
+              "heading-blue": "#124673",
+              "body-gray-blue": "#5a6c7d",
+              "accent-turquoise": "#7df5d4",
+              "neutral-silver": "#e9ecef"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+          },
+        },
+      }
+    
+</script>
+
+
+
+
+
+</head>
+
+<body class="bg-background text-textPrimary flex flex-col min-h-screen transition-colors duration-300">
+
+    <!-- Navbar -->
+    <nav
+        class="bg-card border-b border-slate-800 text-textPrimary shadow-md fixed w-full top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-3 space-x-reverse no-underline">
+                    <img src="assets/log.jpeg" alt="Samsar Tech Logo" class="h-16 w-auto object-contain"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+
+                    <!-- Fallback -->
+                    <div class="flex flex-col pr-2">
+                        <div class="flex items-center gap-1">
+                            <span class="text-xl font-bold tracking-wide text-primary dark:text-white">سمسار
+                                التقنية</span>
+                            <span class="text-xl font-bold tracking-wide text-accent">للمقاولات</span>
+                        </div>
+                        <span class="text-xs text-gray-500 dark:text-gray-400 tracking-wider">Samsar Tech
+                            Construction</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-4">
+                    <div class="ml-4 flex items-baseline space-x-4 space-x-reverse">
+                        <a href="#home"
+                            class="nav-link px-3 py-2 rounded-md text-sm font-bold transition-colors duration-200 no-underline text-gray-600"
+                            style="--tw-text-opacity: 1;">الرئيسية</a>
+                        <a href="#about"
+                            class="nav-link px-3 py-2 rounded-md text-sm font-bold transition-colors duration-200 no-underline text-gray-600"
+                            style="--tw-text-opacity: 1;">من نحن</a>
+                        <a href="#services"
+                            class="nav-link px-3 py-2 rounded-md text-sm font-bold transition-colors duration-200 no-underline text-gray-600"
+                            style="--tw-text-opacity: 1;">خدماتنا</a>
+                        <a href="#projects"
+                            class="nav-link px-3 py-2 rounded-md text-sm font-bold transition-colors duration-200 no-underline text-gray-600"
+                            style="--tw-text-opacity: 1;">مشاريعنا</a>
+                        <a href="#contact"
+                            class="nav-link px-3 py-2 rounded-md text-sm font-bold transition-colors duration-200 no-underline text-gray-600"
+                            style="--tw-text-opacity: 1;">اتصل بنا</a>
+                    </div>
+                </div>
+
+                <!-- Mobile controls -->
+                <div class="md:hidden flex items-center gap-2">
+                    <!-- Menu Button -->
+                    <button type="button" onclick="toggleMobileMenu()"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none">
+                        <i data-lucide="menu" id="menu-icon" class="block h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" onclick="toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 no-underline">الرئيسية</a>
+                <a href="#about" onclick="toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 no-underline">من
+                    نحن</a>
+                <a href="#services" onclick="toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 no-underline">خدماتنا</a>
+                <a href="#projects" onclick="toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 no-underline">مشاريعنا</a>
+                <a href="#contact" onclick="toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 no-underline">اتصل
+                    بنا</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-24">
+
+        <!-- ================= HOME SECTION ================= -->
+        <section id="home" class="w-full">
+            <!-- Hero Section -->
+            <section class="relative h-[600px] flex items-center justify-center overflow-hidden"
+                style="background: linear-gradient(135deg, #FF6B35 0%, #004E89 100%);">
+                <div class="absolute inset-0 z-0">
+                    <img src="assets/hero1.jpg" alt="Technology Background"
+                        class="w-full h-full object-cover opacity-20">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+                <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                        حلول تقنية ومقاولات <br /> <span class="text-accent">لبنية تحتية متكاملة</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 font-light">
+                        شريكك الموثوق لأنظمة الشبكات، كاميرات المراقبة، وحلول المقاولات العامة.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#contact"
+                            class="font-bold py-3 px-8 rounded-full transition-all duration-300 flex items-center justify-center gap-2 no-underline"
+                            style="background: #00D4FF; color: white;" onmouseover="this.style.background='#00B8D4'"
+                            onmouseout="this.style.background='#00D4FF'">
+                            اطلب استشارة مجانية
+                            <i data-lucide="arrow-left" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#services"
+                            class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full transition-all duration-300 no-underline"
+                            onmouseover="this.style.background='white'; this.style.color='#FF6B35'"
+                            onmouseout="this.style.background='transparent'; this.style.color='white'">
+                            استكشف خدماتنا
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="relative z-20 px-4 -mt-16 mb-16">
+                <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-gray-100">
+                        <!-- Clients -->
+                        <div class="flex flex-col items-center justify-center p-2 group cursor-default">
+                            <div
+                                class="mb-4 p-4 rounded-full bg-orange-50 group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="users" class="w-8 h-8 text-primary"></i>
+                            </div>
+                            <h3 class="text-4xl font-extrabold text-textPrimary mb-2 font-display">+500</h3>
+                            <p class="text-muted font-medium text-lg">عميل سعيد</p>
+                        </div>
+
+                        <!-- Projects -->
+                        <div class="flex flex-col items-center justify-center p-2 group cursor-default">
+                            <div
+                                class="mb-4 p-4 rounded-full bg-blue-50 group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="briefcase" class="w-8 h-8 text-secondary"></i>
+                            </div>
+                            <h3 class="text-4xl font-extrabold text-textPrimary mb-2 font-display">+120</h3>
+                            <p class="text-muted font-medium text-lg">مشروع ناجح</p>
+                        </div>
+
+                        <!-- Experts -->
+                        <div class="flex flex-col items-center justify-center p-2 group cursor-default">
+                            <div
+                                class="mb-4 p-4 rounded-full bg-cyan-50 group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="award" class="w-8 h-8 text-accent"></i>
+                            </div>
+                            <h3 class="text-4xl font-extrabold text-textPrimary mb-2 font-display">+50</h3>
+                            <p class="text-muted font-medium text-lg">خبير ومختص</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Brief Services Cards -->
+            <!-- ================= SERVICES SECTION ================= -->
+            <section id="services" class="py-20 bg-background transition-colors duration-300">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-textPrimary mb-4">خدماتنا</h2>
+                        <p class="text-lg text-muted max-w-2xl mx-auto">نقدم مجموعة متكاملة من الحلول التقنية والأمنية،
+                            مصممة خصيصاً لتلبية احتياجاتك بأعلى معايير الجودة.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Network Systems -->
+                        <a href="service-details.html?id=network"
+                            class="bg-card rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group no-underline block hover:-translate-y-2 relative overflow-hidden flex flex-col h-full">
+                            <div class="h-56 w-full overflow-hidden relative">
+                                <div
+                                    class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300 z-10">
+                                </div>
+                                <img src="assets/hero1.jpg"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt="أنظمة الشبكات">
+                            </div>
+                            <div class="p-8 text-center flex flex-col flex-grow">
+                                <h3
+                                    class="text-2xl font-bold mb-3 text-textPrimary group-hover:text-primary transition-colors">
+                                    أنظمة الشبكات
+                                </h3>
+                                <p class="text-muted leading-relaxed">تصميم وتأسيس شبكات سلكية ولاسلكية بسرعات عالية
+                                    وتغطية
+                                    شاملة.</p>
+                            </div>
+                        </a>
+
+                        <!-- Surveillance Cameras -->
+                        <a href="service-details.html?id=camera"
+                            class="bg-card rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group no-underline block hover:-translate-y-2 relative overflow-hidden flex flex-col h-full">
+                            <div class="h-56 w-full overflow-hidden relative">
+                                <div
+                                    class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300 z-10">
+                                </div>
+                                <img src="assets/م.jpg"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt="كاميرات المراقبة">
+                            </div>
+                            <div class="p-8 text-center flex flex-col flex-grow">
+                                <h3
+                                    class="text-2xl font-bold mb-3 text-textPrimary group-hover:text-secondary transition-colors">
+                                    كاميرات المراقبة
+                                </h3>
+                                <p class="text-muted leading-relaxed">أنظمة مراقبة ذكية بدقة عالية ومزايا المشاهدة عن
+                                    بعد
+                                    لحماية ممتلكاتك.</p>
+                            </div>
+                        </a>
+
+                        <!-- Audio Systems -->
+                        <a href="service-details.html?id=audio"
+                            class="bg-card rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group no-underline block hover:-translate-y-2 relative overflow-hidden flex flex-col h-full">
+                            <div class="h-56 w-full overflow-hidden relative">
+                                <div
+                                    class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300 z-10">
+                                </div>
+                                <img src="assets/صوتيه.jpg"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt="أنظمة الصوتيات">
+                            </div>
+                            <div class="p-8 text-center flex flex-col flex-grow">
+                                <h3
+                                    class="text-2xl font-bold mb-3 text-textPrimary group-hover:text-accent transition-colors">
+                                    أنظمة الصوتيات
+                                </h3>
+                                <p class="text-muted leading-relaxed">تجهيزات صوتية متطورة للمساجد والقاعات مع تحكم
+                                    مركزي
+                                    ونقاء عالي.</p>
+                            </div>
+                        </a>
+
+                        <!-- Intercom -->
+                        <a href="service-details.html?id=intercom"
+                            class="bg-card rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group no-underline block hover:-translate-y-2 relative overflow-hidden flex flex-col h-full">
+                            <div class="h-56 w-full overflow-hidden relative">
+                                <div
+                                    class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300 z-10">
+                                </div>
+                                <img src="assets/n.jpg"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt="الإنتركم الذكي">
+                            </div>
+                            <div class="p-8 text-center flex flex-col flex-grow">
+                                <h3
+                                    class="text-2xl font-bold mb-3 text-textPrimary group-hover:text-primary transition-colors">
+                                    الإنتركم الذكي
+                                </h3>
+                                <p class="text-muted leading-relaxed">أنظمة إنتركم مرئي وصوتي للتحكم في بوابات الدخول
+                                    بأمان
+                                    وراحة.</p>
+                            </div>
+                        </a>
+
+                        <!-- Smart Locks -->
+                        <a href="service-details.html?id=lock"
+                            class="bg-card rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group no-underline block hover:-translate-y-2 relative overflow-hidden flex flex-col h-full">
+                            <div class="h-56 w-full overflow-hidden relative">
+                                <div
+                                    class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300 z-10">
+                                </div>
+                                <img src="assets/اقفال.png"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt="الأقفال الذكية">
+                            </div>
+                            <div class="p-8 text-center flex flex-col flex-grow">
+                                <h3
+                                    class="text-2xl font-bold mb-3 text-textPrimary group-hover:text-secondary transition-colors">
+                                    الأقفال الذكية
+                                </h3>
+                                <p class="text-muted leading-relaxed">حلول أقفال إلكترونية متطورة تعمل بالبصمة، الكارت،
+                                    أو
+                                    التطبيق.</p>
+                            </div>
+                        </a>
+
+                        <!-- PABX / Central -->
+                        <a href="service-details.html?id=pabx"
+                            class="bg-card rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group no-underline block hover:-translate-y-2 relative overflow-hidden flex flex-col h-full">
+                            <div class="h-56 w-full overflow-hidden relative">
+                                <div
+                                    class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300 z-10">
+                                </div>
+                                <img src="assets/سنترال.jpg"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt="السنترالات">
+                            </div>
+                            <div class="p-8 text-center flex flex-col flex-grow">
+                                <h3
+                                    class="text-2xl font-bold mb-3 text-textPrimary group-hover:text-accent transition-colors">
+                                    السنترالات والاتصالات
+                                </h3>
+                                <p class="text-muted leading-relaxed">أنظمة سنترال IP حديثة تربط فروعك وتسهل التواصل
+                                    الداخلي
+                                    والخارجي.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+            <!-- ================= ABOUT SECTION ================= -->
+            <section id="about" class="w-full bg-white border-t border-gray-100 transition-colors duration-300">
+                <div class="text-white py-20 px-4"
+                    style="background: linear-gradient(135deg, #FF6B35 0%, #004E89 100%);">
+                    <div class="max-w-7xl mx-auto text-center">
+                        <h1 class="text-4xl font-bold mb-4">من نحن</h1>
+                        <p class="text-xl text-gray-100 max-w-2xl mx-auto">
+                            نبني جسور التكنولوجيا الآمنة لشركات المستقبل.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <!-- Story Section -->
+                    <div class="mb-20">
+                        <div class="flex flex-col md:flex-row gap-12 items-center">
+                            <div class="md:w-1/2">
+                                <img src="assets/about.jpeg" alt="About Samsar Tech"
+                                    class="rounded-xl shadow-lg w-full">
+                            </div>
+                            <div class="md:w-1/2">
+                                <h2 class="text-3xl font-bold text-textPrimary mb-6 flex items-center gap-2">
+                                    <i data-lucide="users" style="color: #FF6B35;"></i>
+                                    قصتنا
+                                </h2>
+                                <p class="text-gray-600 leading-relaxed text-lg mb-4">
+                                    تأسست <strong>سمسار التقنية للمقاولات</strong> عام 2022 لتكون رائدة في تقديم حلول
+                                    البنية التحتية التقنية في المنطقة. بدأنا كفريق صغير من المهندسين والفنيين الشغوفين،
+                                    ونما فريقنا ليصبح شريكاً استراتيجياً للعديد من الشركات والمؤسسات.
+                                </p>
+                                <p class="text-gray-600 leading-relaxed text-lg">
+                                    نتخصص في توفير وتركيب وصيانة أنظمة الشبكات، كاميرات المراقبة، أنظمة البصمة،
+                                    والإنتركم، بالإضافة إلى خدمات المقاولات العامة بأعلى معايير الجودة العالمية.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vision -->
+                    <div class="bg-card rounded-2xl p-10 mb-20 text-center border border-gray-100">
+                        <i data-lucide="target" class="h-16 w-16 mx-auto mb-6" style="color: #004E89;"></i>
+                        <h2 class="text-3xl font-bold text-textPrimary mb-4">رؤيتنا</h2>
+                        <p class="text-xl text-muted max-w-3xl mx-auto mt-4">
+                            أن نكون الخيار الأول للشركات في المنطقة عندما يتعلق الأمر بالحلول التقنية المتكاملة
+                            والمقاولات، من خلال تقديم خدمات مبتكرة تساهم في رفع كفاءة بيئة العمل.
+                        </p>
+                    </div>
+
+                    <!-- Values -->
+                    <div>
+                        <h2 class="text-3xl font-bold text-textPrimary mb-10 text-center">قيمنا الأساسية</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-card p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                                style="border-top: 4px solid #FF6B35;">
+                                <i data-lucide="shield" class="h-10 w-10 mb-4" style="color: #FF6B35;"></i>
+                                <h3 class="text-xl font-bold mb-3 text-textPrimary">الجودة</h3>
+                                <p class="text-muted">الالتزام بأفضل المعايير والمعدات العالمية لضمان استدامة الحلول
+                                    المقدمة.</p>
+                            </div>
+                            <div class="bg-card p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                                style="border-top: 4px solid #004E89;">
+                                <i data-lucide="pen-tool" class="h-10 w-10 mb-4" style="color: #004E89;"></i>
+                                <h3 class="text-xl font-bold mb-3 text-textPrimary">الموثوقية</h3>
+                                <p class="text-muted">توفير دعم وصيانة مستمرة لضمان عمل أنظمتك بكفاءة دون انقطاع.</p>
+                            </div>
+                            <div class="bg-card p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                                style="border-top: 4px solid #00D4FF;">
+                                <i data-lucide="lightbulb" class="h-10 w-10 mb-4" style="color: #00D4FF;"></i>
+                                <h3 class="text-xl font-bold mb-3 text-textPrimary">الابتكار</h3>
+                                <p class="text-muted">مواكبة أحدث التقنيات في عالم الشبكات والأمان لتقديم الأفضل
+                                    لعملائنا.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+
+
+
+
+            <!-- Logos Section -->
+            <section id="logos" class="section py-20 bg-gray-50">
+                <div class="container mx-auto px-4">
+                    <h2 class="section-title text-center mb-8"></h2>
+                    <div class="logos-row flex justify-center items-center gap-8 flex-wrap">
+                        <img src="assets/1-l.png" alt="Logo 1"
+                            class="max-h-20 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="assets/2-l.png" alt="Logo 2"
+                            class="max-h-20 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="assets/3-l.png" alt="Logo 3"
+                            class="max-h-20 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="assets/5-l.png" alt="Logo 4"
+                            class="max-h-20 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="assets/4-l.png" alt="Logo 5"
+                            class="max-h-20 grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="py-20 bg-white relative overflow-hidden">
+                <div class="glow-circle bg-primary top-10 left-10"></div>
+                <div class="glow-circle bg-accent top-40 right-20"></div>
+                <div class="glow-circle bg-accent-turquoise bottom-20 left-1/4"></div>
+                <div class="glow-circle bg-primary bottom-10 right-10"></div>
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h4
+                            class="text-sm font-bold leading-normal tracking-[0.015em] px-4 py-1 bg-primary/10 text-primary rounded-full inline-block">
+                            أعمالنا المميزة</h4>
+                        <h2
+                            class="text-4xl md:text-5xl font-bold text-heading-blue mb-4 font-display mt-4 flex items-center justify-center gap-3">
+                            <i data-lucide="briefcase" class="text-primary sm:w-10 sm:h-10 w-8 h-8"></i>
+                            مشاريعنا الناجحة
+                        </h2>
+                        <p class="text-body-gray-blue text-lg max-w-2xl mx-auto">فخورون بخدمة مجموعة متنوعة من العملاء
+                            في القطاعات التعليمية، الحكومية، التجارية والخدمية بأعلى معايير الجودة والاحترافية</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
+                        <!-- Featured Project -->
+                        <div
+                            class="md:col-span-2 lg:col-span-3 flex flex-col md:flex-row gap-6 sm:gap-8 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl">
+                            <div class="w-full md:w-1/2 aspect-video bg-cover bg-center rounded-lg"
+                                style="background-image: url('assets/2-p.jpeg');"></div>
+                            <div class="w-full md:w-1/2 flex flex-col justify-center">
+                                <div class="flex flex-col gap-4">
+                                    <div>
+                                        <span
+                                            class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">تعليمي</span>
+                                        <h3 class="text-2xl sm:text-3xl font-bold mt-3 text-heading-blue">جامعة المجمعة
+                                        </h3>
+                                        <p class="text-body-gray-blue mt-1 text-base">تركيب نظام أمني متكامل يشمل أكثر
+                                            من 150 كاميرا مراقبة عالية الدقة، أنظمة التحكم بالدخول، وغرف مراقبة مركزية
+                                            لضمان سلامة الطلاب والكادر التعليمي على مدار الساعة.</p>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-white/20">
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary w-10 h-10">
+                                                <i data-lucide="video" class="w-5 h-5"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold text-lg text-heading-blue">+150</p>
+                                                <p class="text-sm text-body-gray-blue">كاميرا مراقبة</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary w-10 h-10">
+                                                <i data-lucide="shield" class="w-5 h-5"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold text-lg text-heading-blue">12</p>
+                                                <p class="text-sm text-body-gray-blue">نقاط دخول مؤمنة</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary w-10 h-10">
+                                                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold text-lg text-heading-blue">3</p>
+                                                <p class="text-sm text-body-gray-blue">غرف مراقبة</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Other Projects -->
+                        <div
+                            class="flex flex-col gap-4 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl hover:shadow-primary/20 transition-all duration-300">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                style="background-image: url('assets/9-p.jpeg');"></div>
+                            <div>
+                                <span
+                                    class="text-xs font-bold uppercase tracking-wider text-green-500 bg-green-500/10 px-3 py-1 rounded-full">خدمي</span>
+                                <h3 class="text-xl font-bold mt-3 text-heading-blue">مركز التمكين الشامل - الزلفي</h3>
+                                <p class="text-body-gray-blue mt-1 text-sm">حلول أمنية ذكية لمركز رعاية ذوي الاحتياجات
+                                    الخاصة...</p>
+                            </div>
+                            <ul class="flex flex-col gap-3 pt-4 border-t border-white/20 mt-auto">
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="video" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">64 كاميرا مراقبة IP</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="wifi" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">تغطية شبكة واي فاي كاملة</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="info" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">نظام استدعاء ممرضات</span>
+                                </li>
+                            </ul>
+                            <button onclick="openProjectModal(0)"
+                                class="bg-white text-orange-300 px-6 py-2 rounded-full hover:bg-orange-100 transition-colors font-bold border border-orange-100 cursor-pointer">شاهد
+                                التفاصيل</button>
+                        </div>
+
+                        <div
+                            class="flex flex-col gap-4 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl hover:shadow-primary/20 transition-all duration-300">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                style="background-image: url('assets/8-p.jpeg');"></div>
+                            <div>
+                                <span
+                                    class="text-xs font-bold uppercase tracking-wider text-green-500 bg-green-500/10 px-3 py-1 rounded-full">خدمي</span>
+                                <h3 class="text-xl font-bold mt-3 text-heading-blue">مركز التمكين الشامل - الأحساء</h3>
+                                <p class="text-body-gray-blue mt-1 text-sm">نظام أمني شامل مصمم خصيصاً لبيئة رعاية
+                                    صحية...</p>
+                            </div>
+                            <ul class="flex flex-col gap-3 pt-4 border-t border-white/20 mt-auto">
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="video" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">48 كاميرا مراقبة ذكية</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="lock" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">15 باب تحكم بالدخول</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="speaker" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">نظام صوتي مركزي</span>
+                                </li>
+                            </ul>
+                            <button onclick="openProjectModal(1)"
+                                class="bg-white text-orange-300 px-6 py-2 rounded-full hover:bg-orange-100 transition-colors font-bold border border-orange-100 cursor-pointer">شاهد
+                                التفاصيل</button>
+                        </div>
+
+                        <div
+                            class="flex flex-col gap-4 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl hover:shadow-primary/20 transition-all duration-300">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                style="background-image: url('assets/5-p.jpeg');"></div>
+                            <div>
+                                <span
+                                    class="text-xs font-bold uppercase tracking-wider text-orange-500 bg-orange-500/10 px-3 py-1 rounded-full">تجاري</span>
+                                <h3 class="text-xl font-bold mt-3 text-heading-blue">التعاونية - الزلفي</h3>
+                                <p class="text-body-gray-blue mt-1 text-sm">حماية متكاملة لمركز تسوق كبير...</p>
+                            </div>
+                            <ul class="flex flex-col gap-3 pt-4 border-t border-white/20 mt-auto">
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="video" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">نظام مراقبة خارجي وداخلي</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="shield-alert" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">نظام إنذار ضد السرقة</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="server" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">غرفة بيانات مؤمنة</span>
+                                </li>
+                            </ul>
+                            <button onclick="openProjectModal(2)"
+                                class="bg-white text-orange-300 px-6 py-2 rounded-full hover:bg-orange-100 transition-colors font-bold border border-orange-100 cursor-pointer">شاهد
+                                التفاصيل</button>
+                        </div>
+
+                        <div
+                            class="flex flex-col gap-4 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl hover:shadow-primary/20 transition-all duration-300">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                style="background-image: url('assets/4-p.jpeg');"></div>
+                            <div>
+                                <span
+                                    class="text-xs font-bold uppercase tracking-wider text-blue-500 bg-blue-500/10 px-3 py-1 rounded-full">حكومي</span>
+                                <h3 class="text-xl font-bold mt-3 text-heading-blue">بلدية الزلفي</h3>
+                                <p class="text-body-gray-blue mt-1 text-sm">مشروع حكومي متكامل يشمل تأمين المباني
+                                    الإدارية...</p>
+                            </div>
+                            <ul class="flex flex-col gap-3 pt-4 border-t border-white/20 mt-auto">
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="video" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">مراقبة محيطية للمباني</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="network" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">تأسيس بنية تحتية للألياف</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="phone-call" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">سنترال IP لـ 200 تحويلة</span>
+                                </li>
+                            </ul>
+                            <button onclick="openProjectModal(3)"
+                                class="bg-white text-orange-300 px-6 py-2 rounded-full hover:bg-orange-100 transition-colors font-bold border border-orange-100 cursor-pointer">شاهد
+                                التفاصيل</button>
+                        </div>
+
+                        <div
+                            class="flex flex-col gap-4 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl hover:shadow-primary/20 transition-all duration-300">
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                                style="background-image: url('assets/كاميرات.jpg');"></div>
+                            <div>
+                                <span
+                                    class="text-xs font-bold uppercase tracking-wider text-orange-500 bg-orange-500/10 px-3 py-1 rounded-full">تجاري</span>
+                                <h3 class="text-xl font-bold mt-3 text-heading-blue">مول دومة الجندل</h3>
+                                <p class="text-body-gray-blue mt-1 text-sm">حل أمني عصري لمجمع تجاري كبير...</p>
+                            </div>
+                            <ul class="flex flex-col gap-3 pt-4 border-t border-white/20 mt-auto">
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="video" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">80 كاميرا 4K للممرات</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="users" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">نظام عد الزوار الذكي</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="music" class="text-primary w-5 h-5"></i>
+                                    <span class="text-sm text-body-gray-blue">نظام موسيقى خلفية للمول</span>
+                                </li>
+                            </ul>
+                            <button onclick="openProjectModal(4)"
+                                class="bg-white text-orange-300 px-6 py-2 rounded-full hover:bg-orange-100 transition-colors font-bold border border-orange-100 cursor-pointer">شاهد
+                                التفاصيل</button>
+                        </div>
+
+                    </div>
+                    <div
+                        class="mt-24 bg-gradient-to-r from-primary to-orange-600 rounded-3xl p-8 sm:p-12 text-center text-white shadow-2xl flex flex-col items-center">
+                        <h2 class="text-3xl sm:text-4xl font-bold leading-tight tracking-tight">هل لديك مشروع؟</h2>
+                        <p class="text-white/90 mt-4 max-w-xl text-base">نحن جاهزون لتقديم استشارة مجانية وتصميم نظام
+                            أمني مخصص يناسب احتياجاتك</p>
+                        <div class="flex flex-wrap justify-center gap-4 mt-8">
+                            <a href="#contact"
+                                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white text-orange-300 font-bold leading-normal tracking-[0.015em] hover:bg-orange-100 transition-colors no-underline">
+                                <span class="truncate">تواصل معنا الآن</span>
+                            </a>
+                            <a href="tel:0502604783"
+                                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white text-orange-300 font-bold leading-normal tracking-[0.015em] hover:bg-orange-100 transition-colors no-underline">
+                                <span class="truncate">📞 اتصل: 0502604783</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= CONTACT SECTION ================= -->
+            <section id="contact" class="w-full bg-gray-50 border-t border-gray-200 transition-colors duration-300">
+                <div class="text-white py-16 px-4"
+                    style="background: linear-gradient(135deg, #004E89 0%, #FF6B35 100%);">
+                    <div class="max-w-7xl mx-auto text-center">
+                        <h1 class="text-4xl font-bold mb-4">اتصل بنا</h1>
+                        <p class="text-xl text-gray-100 max-w-2xl mx-auto">
+                            نحن هنا للإجابة على استفساراتك وتقديم الاستشارة المجانية.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-10">
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row mb-16">
+                        <!-- Contact Info Side -->
+                        <div class="lg:w-1/3 bg-slate-900 text-white p-10">
+                            <h3 class="text-2xl font-bold mb-8">معلومات التواصل</h3>
+
+                            <div class="space-y-8">
+                                <div class="flex items-start gap-4">
+                                    <i data-lucide="map-pin" class="w-6 h-6 mt-1" style="color: #00D4FF;"></i>
+                                    <div>
+                                        <h4 class="font-bold text-lg mb-1">العنوان</h4>
+                                        <p class="text-gray-300">الرياض، حي العليا، شارع التحلية، المملكة العربية
+                                            السعودية</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <i data-lucide="phone" class="w-6 h-6 mt-1" style="color: #00D4FF;"></i>
+                                    <div>
+                                        <h4 class="font-bold text-lg mb-1">الهاتف</h4>
+                                        <p class="text-gray-300 dir-ltr text-right">+966 50 123 4567</p>
+                                        <p class="text-gray-400 text-sm mt-1">المبيعات والدعم الفني</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <i data-lucide="mail" class="w-6 h-6 mt-1" style="color: #00D4FF;"></i>
+                                    <div>
+                                        <h4 class="font-bold text-lg mb-1">البريد الإلكتروني</h4>
+                                        <p class="text-gray-300">info@samsar-tech.com</p>
+                                        <p class="text-gray-300">sales@samsar-tech.com</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <i data-lucide="clock" class="w-6 h-6 mt-1" style="color: #00D4FF;"></i>
+                                    <div>
+                                        <h4 class="font-bold text-lg mb-1">ساعات العمل</h4>
+                                        <p class="text-gray-300">الأحد - الخميس: 9:00 ص - 6:00 م</p>
+                                        <p class="text-gray-300">الجمعة - السبت: مغلق</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Side -->
+                        <div class="lg:w-2/3 p-10">
+                            <div id="contact-success"
+                                class="hidden h-full flex flex-col items-center justify-center text-center">
+                                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                                    <i data-lucide="send" class="w-8 h-8 text-green-600"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-2">شكراً لك!</h3>
+                                <p class="text-gray-600">تم استلام رسالتك بنجاح، وسنتواصل معك في أقرب وقت.</p>
+                                <button onclick="resetForm()" class="mt-6 font-bold hover:underline"
+                                    style="color: #FF6B35;">
+                                    إرسال رسالة أخرى
+                                </button>
+                            </div>
+
+                            <form id="contact-form" onsubmit="submitForm(event)">
+                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">أرسل لنا رسالة</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                        <label htmlFor="name" class="block text-sm font-medium text-muted mb-2">الاسم
+                                            الكامل</label>
+                                        <input type="text" id="name" name="name" required
+                                            class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 outline-none transition-all"
+                                            placeholder="أدخل اسمك" style="--focus-ring: #FF6B35;" />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="phone" class="block text-sm font-medium text-muted mb-2">رقم
+                                            الجوال</label>
+                                        <input type="tel" id="phone" name="phone" required
+                                            class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 outline-none transition-all"
+                                            placeholder="050xxxxxxx" style="--focus-ring: #FF6B35;" />
+                                    </div>
+                                </div>
+
+                                <div class="mb-6">
+                                    <label htmlFor="email" class="block text-sm font-medium text-muted mb-2">البريد
+                                        الإلكتروني</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                                        placeholder="example@email.com" />
+                                </div>
+
+                                <div class="mb-8">
+                                    <label htmlFor="message"
+                                        class="block text-sm font-medium text-muted mb-2">الرسالة</label>
+                                    <textarea id="message" name="message" required rows="4"
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                                        placeholder="كيف يمكننا مساعدتك؟"></textarea>
+                                </div>
+
+                                <button type="submit"
+                                    class="w-full bg-secondary hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md flex items-center justify-center gap-2">
+                                    <i data-lucide="send" class="w-5 h-5"></i>
+                                    إرسال الرسالة
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="max-w-4xl mx-auto">
+                        <div class="text-center mb-10">
+                            <h2 class="text-3xl font-bold text-gray-900 flex items-center justify-center gap-2">
+                                <i data-lucide="help-circle" class="text-secondary w-8 h-8"></i>
+                                الأسئلة الشائعة
+                            </h2>
+                            <p class="text-gray-600 mt-2">إجابات على أكثر الاستفسارات شيوعاً حول خدماتنا</p>
+                        </div>
+
+                        <div id="faq-container" class="space-y-4">
+                            <!-- FAQs will be injected here via JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+    <!-- Project Modal Structure -->
+    <div id="projectModal" class="custom-modal">
+        <div class="custom-modal-content" id="modal-content-wrapper">
+            <!-- Modal content generated by JS -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full bg-textPrimary text-white pt-10 pb-6 mt-auto transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Brand Info -->
+                <div>
+                    <div class="flex items-center space-x-3 space-x-reverse mb-4">
+                        <img src="logo.png" alt="Samsar Tech" class="h-12 w-auto"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+                        <i data-lucide="shield-check" class="h-10 w-10 text-primary hidden"></i>
+                        <div class="flex flex-col pr-2">
+                            <span class="text-xl font-bold text-white">سمسار التقنية</span>
+                            <span class="text-sm font-bold text-primary">للمقاولات</span>
+                        </div>
+                    </div>
+                    <p class="text-sm leading-6 text-gray-300">
+                        شريكك الموثوق لأنظمة الشبكات والأمان المتطورة والمقاولات العامة. حلول متكاملة لبيئة عمل آمنة
+                        وذكية.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+                        <i data-lucide="link" class="h-5 w-5 text-primary"></i>
+                        روابط سريعة
+                    </h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about"
+                                class="text-gray-300 hover:text-primary transition-colors no-underline flex items-center gap-2 hover:pr-2 duration-300"><i
+                                    data-lucide="chevron-left"
+                                    class="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity"></i> من نحن</a>
+                        </li>
+                        <li><a href="#services"
+                                class="text-gray-300 hover:text-primary transition-colors no-underline flex items-center gap-2 hover:pr-2 duration-300"><i
+                                    data-lucide="chevron-left"
+                                    class="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                خدماتنا</a></li>
+                        <li><a href="#projects"
+                                class="text-gray-300 hover:text-primary transition-colors no-underline flex items-center gap-2 hover:pr-2 duration-300"><i
+                                    data-lucide="chevron-left"
+                                    class="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity"></i> معرض
+                                الأعمال</a></li>
+                        <li><a href="#contact"
+                                class="text-gray-300 hover:text-primary transition-colors no-underline flex items-center gap-2 hover:pr-2 duration-300"><i
+                                    data-lucide="chevron-left"
+                                    class="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity"></i> اتصل
+                                بنا</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+                        <i data-lucide="contact" class="h-5 w-5 text-primary"></i>
+                        تواصل معنا
+                    </h3>
+                    <ul class="space-y-3">
+                        <li
+                            class="flex items-center space-x-2 space-x-reverse text-gray-300 hover:text-primary transition-colors duration-300">
+                            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-700">
+                                <i data-lucide="map-pin" class="h-4 w-4 text-primary"></i>
+                            </div>
+                            <span>الرياض، المملكة العربية السعودية</span>
+                        </li>
+                        <li
+                            class="flex items-center space-x-2 space-x-reverse text-gray-300 hover:text-primary transition-colors duration-300">
+                            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-700">
+                                <i data-lucide="phone" class="h-4 w-4 text-primary"></i>
+                            </div>
+                            <span dir="ltr">+966 50 000 0000</span>
+                        </li>
+                        <li
+                            class="flex items-center space-x-2 space-x-reverse text-gray-300 hover:text-primary transition-colors duration-300">
+                            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-700">
+                                <i data-lucide="mail" class="h-4 w-4 text-primary"></i>
+                            </div>
+                            <span>info@samsar-tech.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
+                <p class="text-gray-400">&copy; <span id="year"></span> شركة سمسار التقنية للمقاولات. جميع الحقوق
+                    محفوظة.</p>
+                <p class="text-gray-500 text-xs mt-2">تم التصميم والبرمجة بأحدث التقنيات لخدمتكم</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Application Scripts -->
+    <script>
+        // Set Year
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // FAQ Data
+        const faqs = [
+            {
+                question: "هل تقدمون ضماناً على التركيب والأجهزة؟",
+                answer: "نعم، نقدم ضماناً شاملاً على جميع الأجهزة التي نقوم بتوريدها حسب ضمان الوكيل، بالإضافة إلى ضمان على جودة التركيب والبرمجة لضمان راحة بالك."
+            },
+            {
+                question: "هل تتوفر عقود صيانة سنوية للشركات؟",
+                answer: "بالتأكيد، نوفر عقود صيانة دورية (سنوية أو نصف سنوية) لضمان عمل أنظمتك بكفاءة عالية وتجنب الأعطال المفاجئة."
+            },
+            {
+                question: "ما هي المناطق التي تغطونها؟",
+                answer: "مقرنا الرئيسي في الرياض، ونغطي جميع أحياء الرياض والمناطق المحيطة بها. للمشاريع الكبيرة، يمكننا تقديم خدماتنا في مناطق أخرى بالمملكة."
+            },
+            {
+                question: "هل يمكنني مشاهدة كاميرات المراقبة عن طريق الجوال؟",
+                answer: "نعم، جميع أنظمة المراقبة الحديثة التي نقوم بتركيبها تدعم المشاهدة عن بعد عبر تطبيقات الجوال (iPhone و Android) ومن أي مكان في العالم."
+            },
+            {
+                question: "كم يستغرق تركيب شبكة أو نظام مراقبة؟",
+                answer: "تعتمد المدة على حجم المشروع. المشاريع الصغيرة للمنازل والمكاتب الصغيرة عادة ما تستغرق 1-3 أيام عمل، بينما المشاريع الكبيرة يتم تحديد جدول زمني لها بعد المعاينة."
+            }
+        ];
+
+        function renderFaqs() {
+            const container = document.getElementById('faq-container');
+            if (!container) return;
+
+            container.innerHTML = faqs.map((faq, index) => `
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <button onclick="toggleFaq(${index})" 
+                        class="w-full flex items-center justify-between p-4 text-right bg-white hover:bg-gray-50 transition-colors focus:outline-none">
+                        <span class="font-bold text-gray-800 text-lg">${faq.question}</span>
+                        <i id="faq-icon-${index}" data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-answer-${index}" class="hidden bg-gray-50 border-t border-gray-100">
+                        <p class="p-4 text-gray-600 leading-relaxed">
+                            ${faq.answer}
+                        </p>
+                    </div>
+                </div>
+            `).join('');
+
+            // Re-initialize icons since we just added new HTML with data-lucide attributes
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        }
+
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+
+            // Close all others (optional - can remove if you want multiple open)
+            /*
+            faqs.forEach((_, i) => {
+                if (i !== index) {
+                    document.getElementById(`faq-answer-${i}`)?.classList.add('hidden');
+                    document.getElementById(`faq-icon-${i}`)?.classList.remove('rotate-180');
+                }
+            });
+            */
+
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                answer.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+
+
+
+
+        // Project Data
+        const projectsData = [
+            {
+                title: "مركز التمكين الشامل - الزلفي",
+                category: "خدمي",
+                image: "assets/9-p.jpeg",
+                description: "مشروع متكامل لتأمين مركز رعاية ذوي الاحتياجات الخاصة بأحدث الأنظمة الذكية لضمان سلامتهم وراحتهم.",
+                features: [
+                    "64 كاميرا مراقبة IP عالية الدقة مع تسجيل لمدة 3 أشهر",
+                    "تغطية واي فاي بنسبة 100% للمبنى",
+                    "نظام استدعاء ممرضات في جميع الغرف ودورات المياه",
+                    "خوادم مركزية لإدارة الأنظمة"
+                ]
+            },
+            {
+                title: "مركز التمكين الشامل - الأحساء",
+                category: "خدمي",
+                image: "assets/8-p.jpeg",
+                description: "تصميم وتنفيذ البنية التحتية الأمنية لمركز الرعاية الصحية بالأحساء وفق أعلى المعايير.",
+                features: [
+                    "48 كاميرا مراقبة ذكية مع تحليل الحركة",
+                    "15 باب تحكم بالدخول (Access Control)",
+                    "نظام صوتي مركزي للإعلانات والتنبيهات",
+                    "غرفة تحكم ومراقبة مجهزة",
+                    "نظام إنذار حريق مبكر"
+                ]
+            },
+            {
+                title: "التعاونية - الزلفي",
+                category: "تجاري",
+                image: "assets/5-p.jpeg",
+                description: "نظام حماية شامل لفرع التعاونية لضمان أمان الموظفين والعملاء والبيانات.",
+                features: [
+                    "نظام مراقبة خارجي وداخلي بدقة 4K",
+                    "أجهزة إنذار ضد السرقة والاقتحام",
+                    "غرفة بيانات (Data Center) مؤمنة",
+                    "تجهيز شبكة الاتصالات والإنترنت"
+                ]
+            },
+            {
+                title: "بلدية الزلفي",
+                category: "حكومي",
+                image: "assets/4-p.jpeg",
+                description: "مشروع استراتيجي لتطوير البنية التحتية الرقمية والأمنية لمبنى البلدية والمرافق التابعة له.",
+                features: [
+                    "مراقبة محيطية للمباني والمواقف",
+                    "تمديد كابلات ألياف بصرية (Fiber Optics)",
+                    "سنترال IP متطور يخدم 200 تحويلة",
+                    "ربط الفروع بالمركز الرئيسي",
+                    "نظام إدارة الحضور والانصراف"
+                ]
+            },
+            {
+                title: "مول دومة الجندل",
+                category: "تجاري",
+                image: "assets/كاميرات.jpg",
+                description: "حلول ذكية لمجمع تجاري حديث تهدف لتحسين تجربة الزوار وضمان أمنهم.",
+                features: [
+                    "80 كاميرا 4K موزعة في الممرات والمداخل",
+                    "نظام عد الزوار (People Counting) للاحصائيات",
+                    "نظام صوتي للموسيقى الخلفية والنداء",
+                    "شاشات إعلانية رقمية",
+                    "تغطية إنترنت مجانية للزوار"
+                ]
+            }
+        ];
+
+        function openProjectModal(index) {
+            const project = projectsData[index];
+            const modalContent = document.getElementById('modal-content-wrapper');
+
+            modalContent.innerHTML = `
+                <div class="relative">
+                    <button onclick="closeProjectModal()" class="absolute top-0 left-0 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition-colors">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="aspect-video rounded-2xl overflow-hidden bg-gray-100">
+                                <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col justify-center">
+                            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 w-fit mb-3">
+                                ${project.category}
+                            </span>
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">${project.title}</h2>
+                            <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                                ${project.description}
+                            </p>
+                            
+                            <div class="space-y-4 mb-8">
+                                <h3 class="font-bold text-gray-900 flex items-center gap-2">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>
+                                    مميزات المشروع
+                                </h3>
+                                <ul class="grid gap-3">
+                                    ${project.features.map(feature => `
+                                        <li class="flex items-start gap-3 text-gray-600">
+                                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                                            ${feature}
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-4 pt-6 border-t border-gray-100 mt-auto">
+                                <button onclick="handleContactClick(); closeProjectModal()" 
+                                    class="flex-1 bg-primary text-white font-bold py-3 px-6 rounded-xl hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform duration-200 flex items-center justify-center gap-2">
+                                    <span>اطلب مشروع مشابه</span>
+                                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                                </button>
+                                <button onclick="closeProjectModal()" 
+                                    class="px-6 py-3 rounded-xl border border-gray-200 font-bold text-gray-600 hover:bg-gray-50 transition-colors">
+                                    إغلاق
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Re-initialize icons for the new content
+            lucide.createIcons();
+
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target == modal) {
+                closeProjectModal();
+            }
+        }
+
+        // Handle Contact Button Click from Service Modal
+        function handleContactClick(modalId = null) {
+            if (modalId) {
+                const modalElement = document.getElementById(modalId);
+                if (modalElement) {
+                    const modalInstance = window.bootstrap.Modal.getInstance(modalElement);
+                    if (modalInstance) {
+                        modalInstance.hide();
+                    }
+                }
+            }
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Scroll Spy Logic
+        function initScrollSpy() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    // Adjustment for sticky header
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Initialize App
+        renderFaqs();
+        // renderServices();
+
+        initScrollSpy();
+        lucide.createIcons();
+
+    </script>
+</body>
+
+</html>

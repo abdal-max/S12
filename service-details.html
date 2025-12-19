@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تفاصيل الخدمة</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+    href="https://fonts.googleapis.com/css2?display=swap&family=Cairo:wght@200;300;400;500;600;700;800;900" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'sans-serif'],
+          },
+          colors: {
+            primary: '#FF6B35',
+            secondary: '#004E89',
+            accent: '#00D4FF',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 flex items-center justify-center min-h-screen font-sans p-4">
+
+  <!-- Main Container -->
+  <div
+    class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full overflow-hidden flex flex-col md:flex-row min-h-[600px] animate-fadeIn">
+
+    <!-- Image Side (Desktop) / Top (Mobile) -->
+    <div class="w-full md:w-2/5 relative h-64 md:h-auto">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 md:hidden"></div>
+      <img id="service-image" src="" alt="صورة الخدمة" class="w-full h-full object-cover absolute inset-0" />
+      <button id="closeBtn"
+        class="absolute top-4 right-4 z-20 bg-white/20 backdrop-blur-md p-2 rounded-full text-white hover:bg-white/40 transition-colors md:hidden">
+        <i data-lucide="arrow-right" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Content Side -->
+    <div class="w-full md:w-3/5 p-8 md:p-12 flex flex-col relative overflow-y-auto max-h-[90vh]">
+      <!-- Desktop Close Button -->
+      <button id="closeBtnDesktop"
+        class="hidden md:flex absolute top-6 left-6 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer">
+        <span class="ml-2 font-bold">رجوع</span>
+        <i data-lucide="arrow-left" class="w-6 h-6"></i>
+      </button>
+
+      <div class="mb-2">
+        <span id="service-category" class="text-accent font-bold text-sm tracking-wider uppercase mb-2 block">خدماتنا
+          المميزة</span>
+        <h1 id="service-title" class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight"></h1>
+        <p id="service-description" class="text-gray-600 text-lg leading-relaxed mb-8"></p>
+      </div>
+
+      <!-- Features -->
+      <div class="mb-8">
+        <h2 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <i data-lucide="star" class="text-primary w-5 h-5"></i>
+          مميزات الخدمة
+        </h2>
+        <div id="service-features" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Features will be injected here -->
+        </div>
+      </div>
+
+      <!-- Types -->
+      <div class="mb-8">
+        <h2 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <i data-lucide="layers" class="text-secondary w-5 h-5"></i>
+          أنواع الأنظمة المتوفرة
+        </h2>
+        <div id="service-types" class="flex flex-wrap gap-2">
+          <!-- Types will be injected here -->
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="mt-auto pt-6 border-t border-gray-100">
+        <button onclick="window.location.href='index.html#contact'"
+          class="w-full bg-gradient-to-r from-primary to-orange-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
+          <span>اطلب الخدمة الآن</span>
+          <i data-lucide="arrow-left" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Service Data with correct image paths and lucide icons
+    const servicesData = {
+      network: {
+        title: "أنظمة الشبكات",
+        category: "بنية تحتية",
+        description: "نوفر  حلول شبكات متكاملة (سلكية ولاسلكية) تضمن استقرار الاتصال وسرعة نقل البيانات، مما يعزز كفاءة العمل في منشأتك.",
+        image: "assets/hero1.jpg",
+        features: [
+          { title: "تغطية شاملة", desc: "تصميم احترافي لضمان وصول الإشارة لكل ركن.", icon: "wifi" },
+          { title: "استقرار عالي", desc: "أجهزة متطورة تتحمل ضغط العمل المستمر.", icon: "activity" },
+          { title: "أمان متقدم", desc: "حماية الشبكة من الاختراقات والوصول غير المصرح به.", icon: "shield-check" },
+          { title: "دعم فني", desc: "صيانة وادارة الشبكة لضمان استمراريتها.", icon: "headphones" }
+        ],
+        types: ["تمديدات الفايبر (Fiber Optics)", "شبكات الواي فاي (Access Points)", "الخوادم (Servers)", "كابينات الشبكات (Racks)"]
+      },
+      camera: {
+        title: "كاميرات المراقبة",
+        category: "حلول أمنية",
+        description: "أنظمة مراقبة بصرية حديثة وعالية الدقة تمكنك من متابعة كل ما يدور في منشأتك لحظة بلحظة من أي مكان في العالم.",
+        image: "assets/م.jpg",
+        features: [
+          { title: "دقة 4K", desc: "صورة فائقة الوضوح لتمييز التفاصيل والوجوه.", icon: "eye" },
+          { title: "رؤية ليلية", desc: "تصوير واضح حتى في الظلام الدامس.", icon: "moon" },
+          { title: "مشاهدة عن بعد", desc: "تطبيق جوال لمتابعة الكاميرات مباشرة.", icon: "smartphone" },
+          { title: "تسجيل ذكي", desc: "توفير المساحة بالتسجيل عند الحركة فقط.", icon: "hard-drive" }
+        ],
+        types: ["كاميرات IP", "كاميرات لاسلكية", "كاميرات PTZ متحركة", "أنظمة تسجيل NVR"]
+      },
+      audio: {
+        title: "أنظمة الصوتيات",
+        category: "تجهيزات متقدمة",
+        description: "حلول صوتية احترافية للمساجد، القاعات، والمولات، تضمن نقاء الصوت وتوزيع متوازن يغطي كافة المساحات.",
+        image: "assets/صوتيه.jpg",
+        features: [
+          { title: "نقاء صوتي", desc: "أجهزة تمنع التشويش والصدى.", icon: "music" },
+          { title: "توزيع ذكي", desc: "دراسة هندسية لتوزيع السماعات بشكل مثالي.", icon: "speaker" },
+          { title: "تحكم مركزي", desc: "إمكانية التحكم في الصوت لكل منطقة (Zone).", icon: "sliders" },
+          { title: "تعدد المصادر", desc: "تشغيل من المايك، البلوتوث، أو USB.", icon: "mic" }
+        ],
+        types: ["سماعات سقفية", "سماعات جدارية", "مكبرات صوت (Amplifiers)", "ميكروفونات احترافية"]
+      },
+      lock: {
+        title: "الأقفال الذكية",
+        category: "تحكم بالدخول",
+        description: "تخلص من المفاتيح التقليدية وتحكم في صلاحيات الدخول لأبوابك باستخدام أحدث تقنيات البصمة والبطاقات الذكية.",
+        image: "assets/اقفال.png",
+        features: [
+          { title: "دخول متعدد", desc: "بصمة، رقم سري، بطاقة، أو تطبيق.", icon: "unlock" },
+          { title: "سجل الدخول", desc: "معرفة من دخل وخرج ووقت الدخول.", icon: "file-text" },
+          { title: "متانة عالية", desc: "تصميم مقاوم للعوامل الجوية ومحاولات الخلع.", icon: "shield" },
+          { title: "تحكم عن بعد", desc: "فتح الباب للضيوف وأنت في مكانك.", icon: "wifi" }
+        ],
+        types: ["أقفال الفنادق", "أقفال زجاجية للمكاتب", "أقفال الأبواب الخشبية", "أقفال الكترونية"]
+      },
+      pabx: {
+        title: "السنترالات والاتصالات",
+        category: "اتصالات",
+        description: "أنظمة سنترال IP متطورة تربط جميع مكاتب وفروع شركتك، لضمان تواصل داخلي وخارجي سلس ومجاني بين الفروع.",
+        image: "assets/سنترال.jpg",
+        features: [
+          { title: "تحويل المكالمات", desc: "تحويل تلقائي وذكي للمكالمات.", icon: "phone-forwarded" },
+          { title: "رد آلي (IVR)", desc: "رسالة ترحيبية وتوجيه المتصل للقسم المعني.", icon: "mic-2" },
+          { title: "ربط الفروع", desc: "اتصال مجاني بين فروع الشركة المختلفة.", icon: "globe" },
+          { title: "تسجيل المكالمات", desc: "لتحسين جودة الخدمة والمراجعة.", icon: "save" }
+        ],
+        types: ["سنترالات IP", "هواتف مكتبية", "سنترالات سحابية (Cloud)", "سماعات Call Center"]
+      },
+      intercom: {
+        title: "الإنتركم الذكي",
+        category: "أمن منزلي",
+        description: "شاهد وتحدث مع زوارك قبل فتح الباب، مع إمكانية التحكم في فتح الأبواب والبوابات الكترونياً لمزيد من الأمان.",
+        image: "assets/n.jpg",
+        features: [
+          { title: "رؤية واسعة", desc: "كاميرات بعدسات واسعة لرؤية محيط الباب.", icon: "maximize" },
+          { title: "فتح الباب", desc: "ربط مع القفل الكهربائي لفتح الباب.", icon: "key" },
+          { title: "شاشة داخلية", desc: "شاشات عالية الوضوح تعمل باللمس.", icon: "monitor" },
+          { title: "رؤية ليلية", desc: "وضوح تام حتى في الليل.", icon: "moon" }
+        ],
+        types: ["إنتركم منزلي", "إنتركم للعمارات", "إنتركم صوتي", "إنتركم مرئي ذكي"]
+      }
+    };
+
+    // Parse Query Params
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceId = urlParams.get("id") || "network";
+
+    // Bind Data
+    const service = servicesData[serviceId];
+
+    if (service) {
+      document.getElementById("service-category").textContent = service.category || "خدمة مميزة";
+      document.getElementById("service-title").textContent = service.title;
+      document.getElementById("service-description").textContent = service.description;
+
+      const imgEl = document.getElementById("service-image");
+      imgEl.src = service.image;
+      imgEl.onerror = function () { this.src = 'assets/log.jpeg'; }; // Fallback
+
+      // Render Features
+      const featuresContainer = document.getElementById("service-features");
+      if (service.features && service.features.length > 0) {
+        service.features.forEach(f => {
+          const div = document.createElement("div");
+          div.className = "flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-primary/20 hover:bg-primary/5 transition-colors group";
+          div.innerHTML = `
+              <div class="w-10 h-10 rounded-lg bg-white shadow-sm text-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <i data-lucide="${f.icon || 'check-circle'}" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">${f.title}</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">${f.desc}</p>
+              </div>
+            `;
+          featuresContainer.appendChild(div);
+        });
+      } else {
+        featuresContainer.innerHTML = '<p class="text-gray-500">لا توجد مميزات إضافية</p>';
+      }
+
+      // Render Types
+      const typesContainer = document.getElementById("service-types");
+      if (service.types && service.types.length > 0) {
+        service.types.forEach(t => {
+          const span = document.createElement("span");
+          span.className = "inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-secondary/10 text-secondary border border-secondary/20 hover:bg-secondary hover:text-white transition-all cursor-default";
+          span.textContent = t;
+          typesContainer.appendChild(span);
+        });
+      }
+
+    } else {
+      // Handle invalid ID
+      document.body.innerHTML = '<div class="text-center text-red-500">الخدمة غير موجودة</div>';
+    }
+
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Close Button Logic
+    function goBack() {
+      if (document.referrer.includes('index.html')) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html#services';
+      }
+    }
+
+    document.getElementById("closeBtn").addEventListener("click", goBack);
+    document.getElementById("closeBtnDesktop").addEventListener("click", goBack);
+
+  </script>
+
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Custom Scrollbar for the content area */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+
+</body>
+
+</html>

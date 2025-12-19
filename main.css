@@ -1,0 +1,97 @@
+body { font-family: 'Cairo', sans-serif; }
+
+/* هوية الألوان */
+:root {
+    --primary: #FF6B35;
+    --light-bg: #ffffff;
+    --light-section: #f9f9f9;
+
+    --dark-bg: #1e293b;     
+    --dark-card: #334155;   
+    --dark-text: #f8fafc;   
+}
+
+/* قسم الخدمات */
+.services {
+    max-width: 900px;
+    margin: auto;
+    padding: 25px;
+    direction: rtl;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--primary);
+}
+
+/* صندوق الخدمة */
+.service-box {
+    background: var(--light-bg);
+    border: 1px solid #e5e5e5;
+    padding: 20px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    transition: 0.3s;
+}
+
+.service-box:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+/* زر المزيد */
+.more-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    margin-top: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.more-btn:hover {
+    background: #e65d2d;
+    transform: scale(1.03);
+}
+
+/* تفاصيل الخدمة */
+.details {
+    display: none;
+    margin-top: 18px;
+    padding: 15px;
+    background: var(--light-section);
+    border-right: 4px solid var(--primary);
+    border-radius: 12px;
+}
+
+.details h4 {
+    color: var(--primary);
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+/* === Dark Mode === */
+.dark .service-box {
+    background: var(--dark-card);
+    border-color: #475569;
+    color: var(--dark-text);
+}
+
+.dark .details {
+    background: #273449;
+    color: var(--dark-text);
+}
+
+.dark .section-title {
+    color: var(--primary);
+}
+
+.dark .more-btn {
+    background: var(--primary);
+}
